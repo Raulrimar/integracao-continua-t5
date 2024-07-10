@@ -11,4 +11,4 @@ jobs:
         -name: lista arquivos
          run: ls ${{ github.Workspace }}
         -name: Status
-         rum: echo " Status ${{ job.status}}."
+         run: echo " Status ${{ job.status}}."

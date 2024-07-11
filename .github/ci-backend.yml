@@ -1,20 +1,14 @@
 name: CI Back-end
 on:
   push:
-    branches:
-     - 'main' #será executado na banche main
-    paths:
-     - 'sgcmapi/**'
 jobs:
-  build:
+  primeiro-job:
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@4 # aprimeira coisa que sera fazer o checkout
-     - name: Set up JDK 17 #será instalado o java versão 17
-       uses: actions/setup-java@v4 #uses será usadda para esecutar as actions,nesse caso instal qualquer versão dojava
-       with:
-          java-version: '17' #informo a vrsão que quero do java
-          distribution: 'temurin' #distribução do java
-     - name: Mavem Compile/Test # novo passo inicia com o (-)
-       working-directory: sgcmapi/
-       run: mvn compile test # será executado
+      - run: echo "Primeiro passo"
+      - name: Checkout
+        uses: actions/checkout@4
+      - name: Lista arquivos
+        run: ls ${{ github.workspace}}
+      - name: Status
+        rum: echo "Status ${{ job.status }}."

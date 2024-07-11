@@ -6,14 +6,15 @@ on:
       - '!main' #exeto o principal
     paths:
       - 'sgcmapi/**'
-workflow_dispatch:
-workflow_call:
+  workflow_dispatch:
+  workflow_call:
 jobs:
   main: #primeirojob
     name: CI workflow Main #criar um job pra executar omainla de cima
     uses: ./.github/workflow/ci-backend.yml
 
-  merge: #segundojob
+ 
+    merge: #segundojob
     needs: main
     runs:-on: ubuntu-latest
     steps:
@@ -22,6 +23,6 @@ jobs:
       - name: Merge branch
         uses: devmasx/merge-branch@1.4.0
         with:
-          type: now
-          target_branch: main
-          github_token: ${{ github_token }}
+        type: now
+        target_branch: main
+        github_token: ${{ github_token }}

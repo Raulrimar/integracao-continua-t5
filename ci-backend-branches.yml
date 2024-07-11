@@ -10,8 +10,8 @@ on:
   workflow_call:
 jobs:
   main: #primeirojob
-    name: CI workflow Main #criar um job pra executar omainla de cima
-    uses: ./.github/workflow/ci-backend.yml
+   - name: CI workflow Main #criar um job pra executar omainla de cima
+     uses: ./.github/workflow/ci-backend.yml
 
  
     merge: #segundojob

@@ -1,0 +1,23 @@
+name: CD Back-end
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  ci:
+    name: CI Workflow Main
+    uses: ./.github/workflows/ci-backend.yml
+  
+  deploy:
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy
+        uses: johnbeynon/render-deploy-action@master
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
+          wait-for-success: true
